@@ -1,0 +1,39 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+before_install:
+  - npm install -g hexo
+  - npm install -g hexo-cli
+  - npm install --save hexo-helper-live2d
+  - npm install --save hexo-tag-cplayer
+  - npm install hexo-generator-sitemap --save
+  - npm install hexo-generator-baidu-sitemap --save
+  - npm install hexo-baidu-url-submit --save
+install:
+  - npm install
+
+
+#before_script:
+ # - npm install -g gulp
+
+script:
+  - hexo clean
+  - hexo g
+
+after_script:
+  - cd ./public
+  - git init
+  - git config --global user.name "ioliu"
+  - git config --global user.email "1256141550@qq.com"
+  - git add .
+  - git commit -m "Update By TravisCI"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+# E: Build LifeCycle
+
+branches:
+  only:
+    - blogs
+env:
+ global:
+   - GH_REF: github.com/ioliu/ioliu.github.io.git

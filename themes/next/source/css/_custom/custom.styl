@@ -1,0 +1,37 @@
+// Custom styles.
+//修改背景图
+body{
+    background:url("https://wx3.sinaimg.cn/large/006btIwUly1frxzzofvb1j30b40b40uq.jpg");
+}
+// 鼠标样式
+  * {
+    cursor: url("/upload/huaji.ico"),auto!important
+  }
+  :active {
+    cursor: url("/upload/yinxian.ico"),auto!important
+  }
+  :link {
+    cursor: url("/upload/yinxian.ico"),auto!important
+  }
+  :visited {
+    cursor: url("/upload/yinxian.ico"),auto!important
+  }
+//修改背景框不透明度
+
+.site-meta{
+	background: #66CCFF
+	
+	+tablet() {
+    box-shadow: 0 0 16px rgba(102,204,255,0.5);
+	}
+	+mobile() {
+    box-shadow: 0 0 16px rgba(102,204,255,0.5);
+	}
+
+}
+.sidebar-nav-active{
+	color: #66CCFF
+}
+.sidebar-nav-overview{
+	color: #66CCFF
+}
