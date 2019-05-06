@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="true" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="diNFJWHk8B" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="安卓相关," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="利用三星健康修改支付宝步数数据，首先手机需要装有xposed框架，如果没有框架可以使用虚拟框架(VirtualXposed)，使用xposed主要是为了来模拟三星机型，除非你就是在用三星手机，否则支付宝检测到手机不是三星手机，不会同步步数的，本文以Virtual Xposed为例来实现">
+<meta name="keywords" content="安卓相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用三星健康修改手机支付宝步数">
+<meta property="og:url" content="https://hexo.2ml.xyz/使用三星健康修改支付宝步数.html">
+<meta property="og:site_name" content="红颜若雪">
+<meta property="og:description" content="利用三星健康修改支付宝步数数据，首先手机需要装有xposed框架，如果没有框架可以使用虚拟框架(VirtualXposed)，使用xposed主要是为了来模拟三星机型，除非你就是在用三星手机，否则支付宝检测到手机不是三星手机，不会同步步数的，本文以Virtual Xposed为例来实现">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006btIwUly1futxwdg24oj30u01hcwj4.jpg">
+<meta property="og:image" content="https://wx3.sinaimg.cn/mw690/006btIwUly1futxwe5w9oj30u01hcnb2.jpg">
+<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/006btIwUly1futxwf47fgj30u01hcdk2.jpg">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwfm137j30u01hc780.jpg">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwg4q6zj30u01hcjxc.jpg">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwgjpgij30u01hcdim.jpg">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwh3c9cj30u02qlqnj.jpg">
+<meta property="og:updated_time" content="2019-05-06T15:06:20.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用三星健康修改手机支付宝步数">
+<meta name="twitter:description" content="利用三星健康修改支付宝步数数据，首先手机需要装有xposed框架，如果没有框架可以使用虚拟框架(VirtualXposed)，使用xposed主要是为了来模拟三星机型，除非你就是在用三星手机，否则支付宝检测到手机不是三星手机，不会同步步数的，本文以Virtual Xposed为例来实现">
+<meta name="twitter:image" content="https://wx1.sinaimg.cn/mw690/006btIwUly1futxwdg24oj30u01hcwj4.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hexo.2ml.xyz/使用三星健康修改支付宝步数.html"/>
+
+
+
+
+
+  <title>使用三星健康修改手机支付宝步数 | 红颜若雪</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6427ed503136cbf3f642ab8484c90bc8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">红颜若雪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">一个不务正业瞎搞的小站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间线
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hexo.2ml.xyz/使用三星健康修改支付宝步数.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="红颜若雪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx4.sinaimg.cn/large/006btIwUly1frlbyhddakj30zk0zkkjm.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="红颜若雪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用三星健康修改手机支付宝步数</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-31T15:37:20+00:00">
+                2018-08-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/安卓相关/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/使用三星健康修改支付宝步数.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/使用三星健康修改支付宝步数.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/使用三星健康修改支付宝步数.html" class="leancloud_visitors" data-flag-title="使用三星健康修改手机支付宝步数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>利用三星健康修改支付宝步数数据，首先手机需要装有xposed框架，如果没有框架可以使用虚拟框架(VirtualXposed)，使用xposed主要是为了来模拟三星机型，除非你就是在用三星手机，否则支付宝检测到手机不是三星手机，不会同步步数的，本文以Virtual Xposed为例来实现<a id="more"></a></p>
+<p><center>
+    <div id="cplayer-03739733"></div>
+    <script>
+      (function(){
+        function loadcplayer() {
+          if (typeof window.cplayerList === 'undefined') window.cplayerList = {};
+          if (typeof window.cplayerList["cplayer-03739733"] !== 'undefined') return;
+          if (!cplayer.prototype.add163) cplayer.prototype.add163 = function add163(id) {
+            if (!id) throw new Error("Unable Property.");
+            return fetch("https://music.huaji8.top/?id=" + id).then(function(res){return res.json()}).then(function(data){
+              let obj = {
+                name: data.info.songs[0].name,
+                artist: data.info.songs[0].ar.map(function(ar){ return ar.name }).join(','),
+                poster: data.pic.url,
+                lyric: data.lyric.lyric,
+                sublyric: data.lyric.tlyric,
+                src: data.url.url
+              }
+              this.add(obj);
+              return obj;
+            }.bind(this))
+          }
+
+          window.cplayerList["cplayer-03739733"] = new cplayer({
+            element: document.getElementById("cplayer-03739733"),
+            playlist: [{"name":"盗将行纯音乐","artist":"花粥","poster":"https://p1.music.126.net/-qHPT3rhxDlu5zQV9NcQ-A==/109951163555860423.jpg?imageView&thumbnail=500y500","src":"https://music.163.com/song/media/outer/url?id=574564664.mp3","volume":0.5}],
+            generateBeforeElement: true,
+            deleteElementAfterGenerate: true,
+            autoplay: false
+          });
+
+          window.cplayerList["cplayer-03739733"].add163(574564664)
+        }
+        
+        if (typeof window.cplayer === 'undefined' && !document.getElementById("cplayer-script")) {
+          var js = document.createElement("script");
+          js.src = 'https://cdn.jsdelivr.net/gh/MoePlayer/cPlayer/dist/cplayer.js';
+          js.id = "cplayer-script";
+          js.addEventListener("load", loadcplayer);
+          document.body.appendChild(js);
+        } else {
+          window.addEventListener("load", loadcplayer);
+        }
+      })()
+    </script>
+	</center><br>首先下载所需安装包</p>
+<p><meta name="referrer" content="no-referrer"><br>支付宝,三星健康,三星健康步数管理器,XP模块应用变量,VirtualXposed<br><a href="https://pan.baidu.com/s/1y1qjTrRx5cAXHT2Edvwrdw" target="_blank" rel="noopener">下载地址戳我</a><br>首先安装Virtual Xposed(下文称为虚拟机)，完成后打开虚拟机，点击中间按钮调出设置页面，选择添加应用，在内部存储空间里找到三星健康的安装包，按照此方法安装上三星健康、三星健康步数管理器、应用变量、支付宝。<br>将这些APP安装到虚拟机里之后，我们在虚拟机的设置里选择模块管理，然后勾选上应用变量，返回虚拟机的设置选择重启。<br><img src="https://wx1.sinaimg.cn/mw690/006btIwUly1futxwdg24oj30u01hcwj4.jpg" alt=""><br><img src="https://wx3.sinaimg.cn/mw690/006btIwUly1futxwe5w9oj30u01hcnb2.jpg" alt=""><br>提示重启成功后，到模块管理中启动应用变量，选择三星健康，对其应用机型模拟，手机厂商选择三星，手机型号选择S7，然后点击右下角加号保存配置，然后按照此方法对支付宝和三星健康步数管理器应用机型模拟。<br><img src="https://wx1.sinaimg.cn/mw690/006btIwUly1futxwf47fgj30u01hcdk2.jpg" alt=""><br>然后在虚拟机里上划，启动三星健康，不必登录帐号，点击三星健康右上角三个点»设置»关于三星健康，连续点击版本号，直到出现DeveloperMode，然后返回点击数据权限，把支付宝和三星健康步数管理器的所有权限都打开。(此步骤中，关于三星健康中必须显示有SM-之类的信息，表示三星健康读取到的机型是三星手机，否则请重新配置)<br><img src="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwfm137j30u01hc780.jpg" alt=""><br><img src="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwg4q6zj30u01hcjxc.jpg" alt=""><br><img src="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwgjpgij30u01hcdim.jpg" alt=""><br>保持三星健康运行在后台，在虚拟机里启动三星健康步数管理器，点击右下角加号增加步数，回到三星健康，如果步数显示为0，就点一下那个今日步数，再点一下步数管理器，步数就同步到三星健康中了。<br>最后，保持三星健康在后台，在虚拟机里登录支付宝，进入运动，如果没有步数就刷新几遍，还是没有的话，点击右上角设置»记录运动数据，把所有开关打开。如果你在几分钟前打开过支付宝，可能步数不会立即同步，需要过一段时间才能同步。<br>刷成功后就可以捐步了，也可以添加支付宝小号，按照同样的方法刷新一下，步数就同步了。<br>另外，Xposed框架的强大之处并不在于此，Virtual Xposed对于手机无法root而又想体验一些安卓黑科技的朋友来说是一个很好的机会，各种各样强大的XP模块会给你带来很好的使用体验。<br><img src="https://wx4.sinaimg.cn/mw690/006btIwUly1futxwh3c9cj30u02qlqnj.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #4B4B4B;font-size:14px;">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安卓相关/" rel="tag"><i class="fa fa-tag"></i> 安卓相关</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/救砖_K3路由器.html" rel="next" title="走运的一次K3救假砖过程">
+                <i class="fa fa-chevron-left"></i> 走运的一次K3救假砖过程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/对apk文件的简单解释.html" rel="prev" title="apk文件的简单解释">
+                apk文件的简单解释 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx4.sinaimg.cn/large/006btIwUly1frlbyhddakj30zk0zkkjm.jpg"
+                alt="红颜若雪" />
+            
+              <p class="site-author-name" itemprop="name">红颜若雪</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ljc1256" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ljc@live.in" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/ljc6666" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://wpa.qq.com/msgrd?v=3&uin=1256141550&site=qq&menu=yes" target="_blank" title="TencentQQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>TencentQQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">红颜若雪</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <!--script src="//unpkg.com/valine/dist/Valine.min.js"></script-->
+  <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'XiRabF9DcfGNi9sI3hWpa5PR-gzGzoHsz',
+        appKey: 'A0wrS9zz72Au4DzpQb0jLEdC',
+        placeholder: 'Just say something to me',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("XiRabF9DcfGNi9sI3hWpa5PR-gzGzoHsz", "A0wrS9zz72Au4DzpQb0jLEdC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/blood.model.json"},"display":{"width":220,"height":370,"position":"right","hOffset":-120,"vOffset":-130},"mobile":{"show":true,"scale":0.2},"log":false,"tagMode":false});</script></body>
+</html>
+<!--引用动态页面标题-->
+<script type="text/javascript" src="/js/src/dynamic-title.js" ></script>
+<!-- 页面点击小红心 在前面引用会出现找不到的bug-->
+<script type="text/javascript" src="/js/src/love.js"></script>
+<script type="text/javascript" src="/js/src/baidupush.js"></script>
