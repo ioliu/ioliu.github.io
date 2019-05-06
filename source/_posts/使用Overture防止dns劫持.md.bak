@@ -6,7 +6,6 @@ categories: 服务器相关
 ---
 之前一直有一个未解决的问题，就是纯净DNS在Windows上的使用，现在很多地方的运营商都采用了53端口抢答实现DNS劫持；并且学校屏蔽 53端口绕过验证 的方法也是在出口上加防火墙规则，只允许其规定的IP（114DNS以及各运营商DNS）出/入站
 <!--more-->
-<meta name="referrer" content="no-referrer" />
 ![校园网nslookup测试](https://wx4.sinaimg.cn/large/006btIwUly1ftdzvyhfrpj30fv0ouwlq.jpg)
 因此，在Windows上仅仅修改了IPV4配置是没有效果的，校园网根本不允许通过53端口与白名单以外的IP通讯
 所以只能使用非标端口的DNS，但是在Windows上，dns查询所使用的端口默认的就是53，而且修改默认规则非常不方便，因为要考虑到其他使用环境下非标端口可能不能使用

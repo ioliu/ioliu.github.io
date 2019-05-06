@@ -6,7 +6,7 @@ categories: 安卓相关
 ---
 修改后的SSRR客户端显得清新了许多，但是由于是提供给从未接触过科技上网的小白使用，SSR是一个工具，没有配置文件还是不能科技上网，网上有一些免费的订阅链接，如果能够在apk安装好直接就能用岂不是非常方便
 <!--more-->
-于是再次拆包，使用Dex编辑器++搜索apk本身自带的示例链接和默认DNS，将其替换为自己搜罗到的免费订阅连接和<a href="https://puredns.cn">PureDNS</a><meta name="referrer" content="no-referrer" />
+于是再次拆包，使用Dex编辑器++搜索apk本身自带的示例链接和默认DNS，将其替换为自己搜罗到的免费订阅连接和<a href="https://puredns.cn">PureDNS</a>
 
 <img src="https://wx3.sinaimg.cn/large/006btIwUly1frmf37ruu9j30u01hcqgw.jpg" width="75%" height="75%"></img>
 <img src="https://wx3.sinaimg.cn/large/006btIwUly1frmf38qbi7j30u01hc7kf.jpg" width="75%" height="75%"></img>

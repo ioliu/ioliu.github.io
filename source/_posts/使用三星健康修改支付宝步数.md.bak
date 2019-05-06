@@ -14,7 +14,6 @@ categories: 安卓相关
 - 574564664
 {% endcplayer %}</center>
 首先下载所需安装包
-<meta name="referrer" content="no-referrer" />
 支付宝,三星健康,三星健康步数管理器,XP模块应用变量,VirtualXposed
 [下载地址戳我](https://pan.baidu.com/s/1y1qjTrRx5cAXHT2Edvwrdw)
 首先安装Virtual Xposed(下文称为虚拟机)，完成后打开虚拟机，点击中间按钮调出设置页面，选择添加应用，在内部存储空间里找到三星健康的安装包，按照此方法安装上三星健康、三星健康步数管理器、应用变量、支付宝。

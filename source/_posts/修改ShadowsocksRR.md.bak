@@ -9,7 +9,6 @@ ShadowsocksRR是由github上的一位大神<a href="https://github.com/Akkariin"
 <a href="https://github.com/Akkariin">@Akkariin</a>在3.5.3版本中加入了防止屏幕截图的功能，本来还没有发现，直到有次给同学分享这款科技上网神器时才感觉到很不方便，于是稍微懂一点安卓反编译的我就利用手头上的MT管理器做了下小小的修改
 <!--more-->
 首先要准备的当然是原版安装包了，由于手机已经root，就直接到/data/app/in.zhaoj.shadowsocksrr中提取出安装包来<meta name="referrer" content="no-referrer" />
-
 然后使用安卓反编译神器MT管理器查看安装包，结构如下
 
 <img src="https://wx1.sinaimg.cn/large/006btIwUly1frmev6dkqmj30u01hc7ic.jpg" width="75%" height="75%"></img>

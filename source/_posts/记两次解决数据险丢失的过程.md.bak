@@ -6,7 +6,7 @@ categories: 折(作)腾(死)日记
 ---
 -----------------------
 <!--more-->
-昨天心血来潮想装个Linux，和win10组双系统，刻完盘后进去安装界面，提示Unable to find a medium containing a live file system。经过各种查资料，得知是刻录工具的问题，换了配套的刻录工具之后进去安装盘卡在徽标界面<meta name="referrer" content="no-referrer" />
+昨天心血来潮想装个Linux，和win10组双系统，刻完盘后进去安装界面，提示Unable to find a medium containing a live file system。经过各种查资料，得知是刻录工具的问题，换了配套的刻录工具之后进去安装盘卡在徽标界面
 进PE里格分区的时候，误操作不小心把引导分区給格了，这下win10也进不去了，于是在PE里查找各种可用的工具来恢复引导，手动新建、使用bootice创建、用diskgenius都没效果，依然进不去，后来打开dism++发现它竟然能识别到win10，心想肯定可以帮我恢复，果然找到了修复引导的选项。
 当时格式化的分区是位于机械硬盘上的，因为我的win10装在固态硬盘上，所以错误的认为引导分区应该是固态上那一块，就把机械硬盘的esp分区给格式化了。
 修复很简单，直接把两块盘上的esp分区都格式化，然后向固态的esp分区写入引导，在BIOS里更改第一启动为固态硬盘，成功回到原系统

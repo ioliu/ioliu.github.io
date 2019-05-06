@@ -4,7 +4,7 @@ date: 2018-05-24 19:48:49
 tags: 前端笔记
 categories: 前端笔记
 ---
-修改圆角头像之前应先将头像开关打开，编辑主题配置文件next/_config.yml，修改字段avatar，值设置成头像的链接地址。<!--more--><meta name="referrer" content="no-referrer" />其中，头像的链接地址可以是:
+修改圆角头像之前应先将头像开关打开，编辑主题配置文件next/_config.yml，修改字段avatar，值设置成头像的链接地址。<!--more-->其中，头像的链接地址可以是:
 <table class="table table-condensed table-striped table-bordered table-hover"><thead><tr><th>地址</th><th>值</th></tr></thead><tr><td>完整的互联网 URI</td><td><code>https://wx4.sinaimg.cn/large/006btIwUly1frlbyhddakj30zk0zkkjm.jpg</code></td><tr><td>站点内的地址</td><td><p>将头像放置主题目录下的  <code>source/uploads/</code> （新建 uploads 目录若不存在）<配置为：<code>avatar: /uploads/avatar.png</code><p>或者放置在<code>source/images/</code>目录下<br>配置为：<code>avatar: /images/avatar.png</code></p></td></tbody></table>然后在 \themes\next\source\css\_common\components\sidebar\sidebar-author.styl 里添加如下代码
 ```
 .site-author-image {

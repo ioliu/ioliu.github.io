@@ -9,7 +9,7 @@ categories: 安卓相关
 　　<center>好久没发博客了，随便写点占个坑，还好我还记得密码和操作</center>
 ![](https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=804004031,3612180739&fm=85&s=10106C32CBF950924C48847F03001063)
 <!--more-->
-　　APK，通俗的讲就是安卓系统的软件安装包，即Android Application Package。安卓开发者开发完一个app后，IDE会将app运行需要的资源文件、代码、配置清单全部打包到一个.apk文件中，你可能会发现，apk文件可以使用zip方式打开，因为其本质上就是一个zip文件。<meta name="referrer" content="no-referrer" />
+　　APK，通俗的讲就是安卓系统的软件安装包，即Android Application Package。安卓开发者开发完一个app后，IDE会将app运行需要的资源文件、代码、配置清单全部打包到一个.apk文件中，你可能会发现，apk文件可以使用zip方式打开，因为其本质上就是一个zip文件。
 　　使用具有查看zip压缩包功能的文件浏览器打开任何一个完整的apk文件，会发现其中会有这几种文件：AndroidMainfest.xml、classes.dex、resources.arsc，以及这几个文件夹：assets、lib、res、META-INF，复杂一些的apk可能有其他的文件，用于实现一些特定的功能
 ![](https://wx4.sinaimg.cn/large/006btIwUly1fwcog9rafuj30k00zk79p.jpg)
 　　如上图，右边一栏是Chrome浏览器的安装包内容，左边一栏是网易云音乐的安装包内容

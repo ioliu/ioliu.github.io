@@ -7,7 +7,6 @@ categories: 喜欢的歌曲
 ![](https://p1.music.126.net/r0TgUXBEEmMG48KSsEa_mg==/109951163143657970.jpg?param=300y300)
 -----------
 <!--more-->
-<meta name="referrer" content="no-referrer" />
 <center>{% cplayer autoplay %}
 - name: Lemon # 自定义歌曲名
   artist: 米津玄師 # 自定义歌曲名

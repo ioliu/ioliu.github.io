@@ -6,7 +6,6 @@ tags:
 - 服务器相关
 categories: 服务器相关
 ---
-<meta name="referrer" content="no-referrer" />
 自从装了Linux以后，win10就很少用了，感觉linux除了显卡上的支持不够好之外，其他方面都很好用，而且各种IDE运行起来很流畅
 以前在windows上下载百度云的资源是用的Chrome插件+一个大神开发的高速下载器(非多线程，基于算法提速)，而这个下载器只有OSX和win版的，无奈只好用proxyee-down多线程下载了
 proxyee在windows上有exe版的启动工具来调用目录里的JRE来运行主程序，到了Linux中，就直接使用系统自带的Openjdk来启动 `java -jar proxyee-down.jar`，但是出现了如下的情况
